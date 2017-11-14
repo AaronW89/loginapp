@@ -1,10 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
 from .forms import UserLoginForm, UserRegistrationForm
-
+from usercontacts.models import Contact
 # Create your views here.
 def get_index(request):
-    return render(request, 'index.html')
+    contacts = Contact.objects.filter(Owner=request.user)
+    return render(request, 'index.html', {'contacts': contacts})
     
 def logout(request):
     auth.logout(request)

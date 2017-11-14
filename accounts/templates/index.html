@@ -16,5 +16,12 @@
         <li><a href="/register">Register</a></li>
         {% endif %}
     </ul>
+    <p>You are logged in as {{request.user.email}}</p>
+   
+   <ul>
+       {% for contact in contacts %}
+           <li>{{contact}}</li>
+       {% endfor %}
+  </ul>
 </body>
 </html>
